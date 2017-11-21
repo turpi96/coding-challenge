@@ -43,7 +43,7 @@ These responses are meant to provide guidance. The exact values can vary based o
 
 ```json
 {
-  "name": "Red Drop Shadow"
+  "name": "Crimson Drop Shadow"
 }
 ```
 
