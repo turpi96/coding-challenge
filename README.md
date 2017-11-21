@@ -1,10 +1,10 @@
 # TLM Coding challenge
-(inspired by https://github.com/coveo/backend-coding-challenge)
+(inspired by: https://github.com/coveo/backend-coding-challenge)
 
 ## Requirements
 
 ### Backend
-Design an API endpoint that provides a ninja name based on a list of technology buzzwords
+Design an API endpoint that provides a ninja name based on a list of technology buzzwords (Ex: [Awesome List](https://github.com/sindresorhus/awesome))
 
 - The endpoint is exposed at `/ninjify`
 - The search has to be deterministic
@@ -34,6 +34,7 @@ Design an user interface to input web technology buzzwords and then generate an 
 
 ## Bonuses
 - Add easter egg with the `Konami` code.
+- Permalink to share the result
 
 ## Sample responses
 
