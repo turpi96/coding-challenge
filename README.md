@@ -30,7 +30,7 @@ Design an user interface to input web technology buzzwords and then generate an 
 - Documentation and maintainability is a plus.
 - Don't you forget those unit tests.
 - We don’t want to know if you can do exactly as asked (or everybody would have the same result). We want to know what **you** bring to the table when working on a project, what is your secret sauce. More features? Best solution? Thinking outside the box?
-- Make sure you apply security good practices
+- Make sure you apply security good practices. _Ninja hide their secrets because pirates will find them._
 
 ## Bonuses
 - Add easter egg with the `Konami` code.
