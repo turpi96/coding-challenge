@@ -1,4 +1,6 @@
 const cool = require('cool-ascii-faces')
+const bodyParser = require('body-parser')
+
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
@@ -9,6 +11,7 @@ const pool = new Pool({
   ssl: true
 });
 
+var urlencodedParser = bodyParser.urlencoded({extended: false})
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -16,7 +19,7 @@ express()
   .set('view engine', 'ejs')
   //.get('/', (req, res) => res.render('pages/index'))
   .get('/', (req, res) => res.redirect('/ninjify'))
-  .get('/db', async (req, res) => {
+  /*.get('/db', async (req, res) => {
     try {
       const client = await pool.connect()
       const result = await client.query('SELECT * FROM test_table');
@@ -27,18 +30,34 @@ express()
       console.error(err);
       res.send("Error " + err);
     }
-  })
+  })*/
   .get('/ninjify', (req, res) => res.render('pages/ninjify'))
-  .get('/cool', (req, res) => res.send(cool()))
-  .get('/times', (req, res) => res.send(showTimes()))
+  .post('/ninjify', urlencodedParser, (req, res) => {
+    // Prepare output in JSON format
+    /*response = {
+
+    };*/
+
+    if(req.body.buzzword == null)
+    {
+      res.render('pages/index');
+    }
+    else
+    {
+      res.send(cool());
+    }
+  }) //Probablement ce que je vais devoir utiliser pour la partie post du formulaire?
+
+  //.get('/cool', (req, res) => res.send(cool()))
+  //.get('/times', (req, res) => res.send(showTimes()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-  showTimes = () => {
+  /*showTimes = () => {
     let result = ''
     const times = process.env.TIMES || 5
     for (i = 0; i < times; i++) {
       result += i + ' '
     }
     return result;
-  }
+  }*/
