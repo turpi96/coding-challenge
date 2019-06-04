@@ -27,6 +27,7 @@ express()
       res.send("Error " + err);
     }
   })
+  .get('/ninjify', (req, res) => res.render('pages/ninjify'))
   .get('/cool', (req, res) => res.send(cool()))
   .get('/times', (req, res) => res.send(showTimes()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
