@@ -1,5 +1,6 @@
 const cool = require('cool-ascii-faces')
 const bodyParser = require('body-parser')
+const querystring = require('querystring')
 
 const express = require('express')
 const path = require('path')
@@ -31,7 +32,9 @@ express()
       res.send("Error " + err);
     }
   })*/
-  .get('/ninjify', (req, res) => res.render('pages/ninjify'))
+  .get('/ninjify', (req, res) => {
+      res.render('pages/ninjify', {qs: req.query});
+  })
   .post('/ninjify', urlencodedParser, (req, res) => {
     // Prepare output in JSON format
     /*response = {
