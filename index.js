@@ -38,7 +38,7 @@ express()
 
     };*/
 
-    if(req.body.buzzword == null)
+    if(!req.body.buzzword)
     {
       res.render('pages/index');
     }
