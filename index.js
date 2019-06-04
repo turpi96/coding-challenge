@@ -35,7 +35,7 @@ express()
   .post('/ninjify', urlencodedParser, (req, res) => {
     // Prepare output in JSON format
     /*response = {
-
+      complete_ninja_name: 
     };*/
 
     if(!req.body.buzzword)
@@ -44,7 +44,11 @@ express()
     }
     else
     {
-      res.send(cool());
+      response = {
+        name:req.body.buzzword
+      };
+      
+      res.end(JSON.stringify(response));
     }
   }) //Probablement ce que je vais devoir utiliser pour la partie post du formulaire?
 
