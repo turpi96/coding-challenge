@@ -47,7 +47,8 @@ express()
         //var ninja_name_string = results.name + " " + results.name;
         //res.end(ninja_name_string);
         //var ninja_name = JSON.parse(ninja_name_string);
-        var obj = {'name':result.rows[0].ninja_equivalent};
+        var tmp_ninja_name = result.rows[0].ninja_equivalent + ' ' + result.rows[0].ninja_equivalent; 
+        var obj = {'name':tmp_ninja_name};
 
         res.end(JSON.stringify(obj));
         //res.end(result.rows[0].ninja_equivalent);
