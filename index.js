@@ -44,6 +44,7 @@ express()
 
         var sql_query = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
         const result = await client.query(sql_query, [req.body.buzzword]);
+        /*
         if(result)
         {
           // TODO: Gestion des cas où le résultat n'existe pas dans la BD
@@ -57,6 +58,8 @@ express()
         {
           res.end("ERROr");
         }
+        */
+       res.end(JSON.stringify(result));
 
 
         
