@@ -12,7 +12,7 @@ const pool = new Pool({
   ssl: true
 });
 
-var urlencodedParser = bodyParser.urlencoded({extended: false})
+var urlencodedParser = bodyParser.urlencoded({extended: true})
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
