@@ -50,7 +50,7 @@ express()
         //var ninja_name = JSON.parse(ninja_name_string);
 
         //res.end(JSON.stringify(results.name));
-        res.end(result.fields[0].name);
+        res.end(result.rows);
         client.release();
       } 
       catch (err) 
