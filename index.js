@@ -35,7 +35,7 @@ express()
   .get('/ninjify', (req, res) => {
       res.render('pages/ninjify', {qs: req.query});
   })
-  .post('/ninjify', urlencodedParser, (req, res) => {
+  .post('/ninjify', urlencodedParser, async (req, res) => {
     // Prepare output in JSON format
     /*response = {
       complete_ninja_name: 
@@ -47,11 +47,29 @@ express()
     }
     else
     {
+      try {
+        const client = await pool.connect()
+        const result = await client.query('SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword="' + req.body.buzzword+'"');
+        const results = { 'results': (result) ? result.rows : null};
+        //res.render('pages/db', results );
+        res.end(JSON.stringify(results));
+        client.release();
+      } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+      }
+
+
+
+
+
+      /*
       response = {
         name:req.body.buzzword
       };
-      
-      res.end(JSON.stringify(response));
+      */
+      //res.end(JSON.stringify(response));
+
     }
   }) //Probablement ce que je vais devoir utiliser pour la partie post du formulaire?
 
