@@ -45,11 +45,12 @@ express()
         const results = { 'name': (result) ? result.rows : null};
 
         // parsed_results.name + " " + parsed_results.name
-        var ninja_name_string = results.name + " " + results.name;
+        //var ninja_name_string = results.name + " " + results.name;
         //res.end(ninja_name_string);
-        var ninja_name = JSON.parse(ninja_name_string);
-        
-        res.end(JSON.stringify(ninja_name));
+        //var ninja_name = JSON.parse(ninja_name_string);
+        console.log(results.name);
+
+        res.end(JSON.stringify(results));
         client.release();
       } 
       catch (err) 
