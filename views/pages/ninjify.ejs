@@ -9,7 +9,7 @@
   <% include ../partials/nav.ejs %>
   
   <form action="/ninjify" method="POST">
-    BuzzWord: <input type="text" name="buzzword" value="<%= qs.x %>">
+    BuzzWord: <input type="text" name="buzzword" value="<%= qs.x %>" required/>
     <input type="submit" value="Submit">
   </form>
 
