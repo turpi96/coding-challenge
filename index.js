@@ -48,7 +48,8 @@ express()
         //var ninja_name_string = results.name + " " + results.name;
         //res.end(ninja_name_string);
         //var ninja_name = JSON.parse(ninja_name_string);
-        console.log(results.name);
+        var tmp = results.name;
+        console.log('tmp');
 
         res.end(JSON.stringify(results));
         client.release();
