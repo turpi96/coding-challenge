@@ -22,11 +22,12 @@ express()
 
   .get('/ninjify', (req, res) => {
 
-    var stringifyied_req_query = qs.stringify(req.query);
-    var parsed_query = qs.parse(stringifyied_req_query, { comma: true })
+    // Converti le query en JSON où les virgules est un délimiteur d'array
+    var stringifyiedReqQuery = qs.stringify(req.query);
+    var parsedQuery = qs.parse(stringifyiedReqQuery, { comma: true })
 
-    console.error(parsed_query);
-    res.render('pages/ninjify', {qs: parsed_query});
+    console.error(parsedQuery);
+    res.render('pages/ninjify', {qs: parsedQuery});
   })
 
   .post('/ninjify', urlencodedParser, async (req, res) => {
@@ -38,13 +39,13 @@ express()
     }
     else
     {
-      //res.end(JSON.stringify(req.body.buzzword[1]));
+
       try 
       {
         const client = await pool.connect()
 
-        var sql_query = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
-        const result = await client.query(sql_query, [req.body.buzzword[0]]);
+        const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
+        const result = await client.query(sqlQuery, [req.body.buzzword[0]]);
 
         // Condition de gestion des cas où le query ne trouve pas le résultat
         if(result.rows.length)
