@@ -1,6 +1,6 @@
 const cool = require('cool-ascii-faces')
 const bodyParser = require('body-parser')
-const querystring = require('querystring')
+const qs = require('qs')
 
 const express = require('express')
 const path = require('path')
@@ -21,19 +21,20 @@ express()
   .get('/', (req, res) => res.redirect('/ninjify'))
 
   .get('/ninjify', (req, res) => {
-      res.render('pages/ninjify', {qs: req.query});
+
+    var stringifyied_req_query = qs.stringify(req.query);
+    var parsed_query = qs.parse(stringifyied_req_query, { comma: true })
+
+    console.error(parsed_query);
+    res.render('pages/ninjify', {qs: parsed_query});
   })
 
   .post('/ninjify', urlencodedParser, async (req, res) => {
-    // Prepare output in JSON format
-    /*response = {
-      complete_ninja_name: 
-    };*/
 
     //Vérifie si le champs du formulaire est vide
     if(!req.body.buzzword)
     {
-      res.render('pages/index');
+      res.render('pages/ninjify');
     }
     else
     {
@@ -44,11 +45,10 @@ express()
 
         var sql_query = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
         const result = await client.query(sql_query, [req.body.buzzword]);
-        
+
+        // Condition de gestion des cas où le query ne trouve pas le résultat
         if(result.rows.length)
         {
-          // TODO: Gestion des cas où le résultat n'existe pas dans la BD
-
           var tmp_ninja_name = result.rows[0].ninja_equivalent + ' ' + result.rows[0].ninja_equivalent; 
           var obj = {'name':tmp_ninja_name};
 
@@ -58,11 +58,7 @@ express()
         {
           res.end("ERROR");
         }
-        
-        //res.end(JSON.stringify(result));
 
-
-        
         client.release();
       } 
       catch (err) 
