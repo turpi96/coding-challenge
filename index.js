@@ -42,8 +42,8 @@ express()
       {
         const client = await pool.connect()
 
-        var sql_query = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = :form_buzzword';
-        const result = await client.query(sql_query, {form_buzzword: req.body.buzzword});
+        var sql_query = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = ?';
+        const result = await client.query(sql_query, [req.body.buzzword]);
         //const results = { 'name': (result) ? result.rows : null };
         // parsed_results.name + " " + parsed_results.name
         //var ninja_name_string = results.name + " " + results.name;
