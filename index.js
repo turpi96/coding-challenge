@@ -41,17 +41,21 @@ express()
       try 
       {
         const client = await pool.connect()
-        const result = await client.query('SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1', [req.body.buzzword]);
+
+        var sql_query = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = :form_buzzword';
+        const result = await client.query(sql_query, {form_buzzword: req.body.buzzword});
         //const results = { 'name': (result) ? result.rows : null };
         // parsed_results.name + " " + parsed_results.name
         //var ninja_name_string = results.name + " " + results.name;
         //res.end(ninja_name_string);
         //var ninja_name = JSON.parse(ninja_name_string);
+
+        // TODO: Gestion des cas où le résultat n'existe pas dans la BD
+
         var tmp_ninja_name = result.rows[0].ninja_equivalent + ' ' + result.rows[0].ninja_equivalent; 
         var obj = {'name':tmp_ninja_name};
 
         res.end(JSON.stringify(obj));
-        //res.end(result.rows[0].ninja_equivalent);
         client.release();
       } 
       catch (err) 
