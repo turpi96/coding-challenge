@@ -49,7 +49,8 @@ express()
         //res.end(ninja_name_string);
         //var ninja_name = JSON.parse(ninja_name_string);
 
-        res.end(JSON.stringify(results));
+        //res.end(JSON.stringify(results));
+        res.end("42");
         client.release();
       } 
       catch (err) 
