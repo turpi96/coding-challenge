@@ -49,7 +49,7 @@ express()
     {
       try {
         const client = await pool.connect()
-        const result = await client.query('SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword="' + req.body.buzzword+'"');
+        const result = await client.query('SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table');
         const results = { 'results': (result) ? result.rows : null};
         //res.render('pages/db', results );
         res.end(JSON.stringify(results));
