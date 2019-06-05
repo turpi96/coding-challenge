@@ -38,14 +38,13 @@ express()
     }
     else
     {
-      res.end(JSON.stringify(req.body.buzzword));
-      /*
+      //res.end(JSON.stringify(req.body.buzzword[1]));
       try 
       {
         const client = await pool.connect()
 
         var sql_query = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
-        const result = await client.query(sql_query, [req.body.buzzword]);
+        const result = await client.query(sql_query, [req.body.buzzword[0]]);
 
         // Condition de gestion des cas où le query ne trouve pas le résultat
         if(result.rows.length)
@@ -67,7 +66,6 @@ express()
         console.error(err);
         res.send("Error " + err);
       }
-      */
     }
   }) 
 
