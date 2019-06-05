@@ -47,10 +47,10 @@ express()
         var parsed_results = JSON.parse(results);
         // parsed_results.name + " " + parsed_results.name
         var ninja_name_string = parsed_results.name + " " + parsed_results.name;
+        res.end(ninja_name_string);
+        //var ninja_name = {name:ninja_name_string};
 
-        var ninja_name = {name:ninja_name_string};
-
-        res.end(JSON.stringify(ninja_name));
+        //res.end(JSON.stringify(ninja_name));
         client.release();
       } 
       catch (err) 
