@@ -10,28 +10,9 @@
     
     <form action="/ninjify" method="POST">
       BuzzWord: <br>
-
-      <% if(qs.x)
-      {
-        qs.x.forEach(function(buzzwordItem, index)
-        { %>
-          <input type="text" name="buzzword[<%= index%>]" value="<%= buzzwordItem %>" required/><br>
-        <% })
-      } 
-      else 
-      {%>
-          <input type="text" name="buzzword[0]" required/>
-
-      <%} %>
-
+      <input type="text" name="buzzword[0]" required/><br>
       <input type="submit" value="Submit">
     </form>
-
-    <ul>
-      
-
-    </ul>
-    
 
 
   </body>

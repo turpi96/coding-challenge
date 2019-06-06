@@ -26,8 +26,15 @@ express()
     var stringifyiedReqQuery = qs.stringify(req.query);
     var parsedQuery = qs.parse(stringifyiedReqQuery, { comma: true })
 
-    console.error(parsedQuery);
-    res.render('pages/ninjify', {qs: parsedQuery});
+    if(Object.keys(req.query).length === 0)
+    {
+      res.render('pages/ninjify');
+    }
+    else
+    {
+      const queryData = parsedQuery.x;
+      GetNinjaName(queryData,res);
+    }
   })
 
   .post('/ninjify', urlencodedParser, (req, res) => {
@@ -68,7 +75,6 @@ async function GetNinjaName(buzzwordData,res)
     console.error(err);
     res.send("Error: " + err);
   }
-
 }
 
 function CreateNinjaName(arrNinjaName, res)
