@@ -32,61 +32,66 @@ express()
 
   .post('/ninjify', urlencodedParser, async (req, res) => {
     var buzzwordData = req.body.buzzword;
-
-    //Vérifie si le champs du formulaire est vide
-    if(!buzzwordData)
-    {
-      res.render('pages/ninjify');
-    }
-    else
-    {
-      
-      try 
-      {
-        const client = await pool.connect()
-        const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword ILIKE $1';
-        
-        var arrNinjaName = [];
-
-        for(i = 0; i < buzzwordData.length; i++)
-        {
-          const result = await client.query(sqlQuery, [buzzwordData[i]]);
-
-          // Condition de gestion des cas où le query ne trouve pas le résultat
-          if(result.rows.length)
-          {
-            arrNinjaName.push(result.rows[0].ninja_equivalent); 
-          }
-        }
-
-        if(arrNinjaName.length > 0)
-        {
-          var stringFullNinjaName = arrNinjaName[0];
-          for(i = 1; i < arrNinjaName.length; i++)
-          {
-            stringFullNinjaName = stringFullNinjaName + ' ' + arrNinjaName[i];
-          }
-          var objFullNinjaName = {'name':stringFullNinjaName};
-          //res.end(JSON.stringify(objFullNinjaName));
-          res.render('pages/ninja_name', objFullNinjaName);
-
-        }
-        else
-        {
-          res.end("Error: buzzwords don't exists in my database");
-        }
-
-        client.release();
-        
-       //res.end("hello");
-      } 
-      catch (err) 
-      {
-        console.error(err);
-        res.send("Error " + err);
-      }
-      
-    }
+    GetNinjaName(buzzwordData);
   }) 
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
+async function GetNinjaName(buzzwordData)
+{
+  //Vérifie si le champs du formulaire est vide
+  if(!buzzwordData)
+  {
+    res.render('pages/ninjify');
+  }
+  else
+  {
+    
+    try 
+    {
+      const client = await pool.connect()
+      const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword ILIKE $1';
+      
+      var arrNinjaName = [];
+
+      for(i = 0; i < buzzwordData.length; i++)
+      {
+        const result = await client.query(sqlQuery, [buzzwordData[i]]);
+
+        // Condition de gestion des cas où le query ne trouve pas le résultat
+        if(result.rows.length)
+        {
+          arrNinjaName.push(result.rows[0].ninja_equivalent); 
+        }
+      }
+
+      if(arrNinjaName.length > 0)
+      {
+        var stringFullNinjaName = arrNinjaName[0];
+        for(i = 1; i < arrNinjaName.length; i++)
+        {
+          stringFullNinjaName = stringFullNinjaName + ' ' + arrNinjaName[i];
+        }
+        var objFullNinjaName = {'name':stringFullNinjaName};
+        //res.end(JSON.stringify(objFullNinjaName));
+        res.render('pages/ninja_name', objFullNinjaName);
+
+      }
+      else
+      {
+        res.end("Error: buzzwords don't exists in my database");
+      }
+
+      client.release();
+      
+    //res.end("hello");
+    } 
+    catch (err) 
+    {
+      console.error(err);
+      res.send("Error " + err);
+    }
+    
+  }
+}
