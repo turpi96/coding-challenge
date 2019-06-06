@@ -40,29 +40,40 @@ express()
     }
     else
     {
-
+      
       try 
       {
         const client = await pool.connect()
-
-
         const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
-        const result = await client.query(sqlQuery, [buzzwordData[2]]);
+        
+        var arrNinjaName = [];
 
-        // Condition de gestion des cas où le query ne trouve pas le résultat
-        if(result.rows.length)
+        buzzwordData.forEach(function(buzzwordDataItem, itemIndex)
         {
-          var tmp_ninja_name = result.rows[0].ninja_equivalent + ' ' + result.rows[0].ninja_equivalent; 
-          var obj = {'name':tmp_ninja_name};
+          const result = await client.query(sqlQuery, [buzzwordDataItem]);
 
-          res.end(JSON.stringify(obj));
+          // Condition de gestion des cas où le query ne trouve pas le résultat
+          if(result.rows.length)
+          {
+            arrNinjaName.push(result.rows[0].ninja_equivalent); 
+          }
+
+        });
+
+        if(arrNinjaName.length > 0)
+        {
+          var stringFullNinjaName = arrNinjaName[0];
+          for(i = 1; i < arrNinjaName.length; i++)
+          {
+            stringFullNinjaName = stringFullNinjaName + ' ' + arrNinjaName[i];
+          }
+          var objFullNinjaName = {'name':stringFullNinjaName};
+          res.end(JSON.stringify(objFullNinjaName));
         }
         else
         {
-          res.end("ERROR");
+          res.end("Error: buzzwords don't exists in my database");
         }
-
-
 
         client.release();
       } 
@@ -71,6 +82,7 @@ express()
         console.error(err);
         res.send("Error " + err);
       }
+      
     }
   }) 
 
