@@ -8,12 +8,15 @@
 
     <% include ../partials/nav.ejs %>
     
-    <form action="/ninjify" method="POST">
+    <form action="/ninjify" method="POST" id="buzzwordForm">
       BuzzWord: <br>
       <input type="text" name="buzzword[0]" required/><br>
       <input type="submit" value="Submit">
     </form>
+    <button id="addBuzzword">Add a Buzzword field</button>
 
 
   </body>
+  <script src="/javascript/addBuzzwordScript.js"> </script>
+
 </html>
