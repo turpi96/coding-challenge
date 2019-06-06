@@ -48,7 +48,7 @@ express()
         
         var arrNinjaName = [];
 
-        buzzwordData.forEach( async function(buzzwordDataItem, itemIndex)
+        for(i = 0; i < buzzwordData.length; i++)
         {
           const result = await client.query(sqlQuery, [buzzwordDataItem]);
 
@@ -57,8 +57,7 @@ express()
           {
             arrNinjaName.push(result.rows[0].ninja_equivalent); 
           }
-
-        });
+        }
 
         if(arrNinjaName.length > 0)
         {
