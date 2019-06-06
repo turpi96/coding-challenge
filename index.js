@@ -44,7 +44,7 @@ express()
       try 
       {
         const client = await pool.connect()
-        const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
+        const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword ILIKE $1';
         
         var arrNinjaName = [];
 
