@@ -48,30 +48,30 @@ module.exports = {
             console.error(err);
             res.render('pages/ninja_error',{error:err});
         }
-    },
-
-    // Crée le nom ninja selon un array.
-    // Puis, on met le résultat dans un JSON
-    // qu'on affiche dans une page voulue.
-    // Gère aussi le cas où il n'y a aucun
-    // nom dans le paramètre arrNinjaname
-    CreateNinjaName: function (arrNinjaName, res)
-    {
-        if(arrNinjaName.length > 0)
-        {
-            var stringFullNinjaName = arrNinjaName[0];
-            for(i = 1; i < arrNinjaName.length; i++)
-            {
-            stringFullNinjaName = stringFullNinjaName + ' ' + arrNinjaName[i];
-            }
-            var objFullNinjaName = {'name':stringFullNinjaName};
-            res.render('pages/ninja_name', objFullNinjaName);
-
-        }
-        else
-        {
-            res.render('pages/ninja_error',{error:"None of the words you've written are known to me?! What is this sorcery?!"});
-        }
     }
 
 };
+
+// Crée le nom ninja selon un array.
+// Puis, on met le résultat dans un JSON
+// qu'on affiche dans une page voulue.
+// Gère aussi le cas où il n'y a aucun
+// nom dans le paramètre arrNinjaname
+function CreateNinjaName(arrNinjaName, res)
+{
+    if(arrNinjaName.length > 0)
+    {
+        var stringFullNinjaName = arrNinjaName[0];
+        for(i = 1; i < arrNinjaName.length; i++)
+        {
+        stringFullNinjaName = stringFullNinjaName + ' ' + arrNinjaName[i];
+        }
+        var objFullNinjaName = {'name':stringFullNinjaName};
+        res.render('pages/ninja_name', objFullNinjaName);
+
+    }
+    else
+    {
+        res.render('pages/ninja_error',{error:"None of the words you've written are known to me?! What is this sorcery?!"});
+    }
+}
