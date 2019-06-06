@@ -32,13 +32,13 @@ express()
 
   .post('/ninjify', urlencodedParser, (req, res) => {
     var buzzwordData = req.body.buzzword;
-    GetNinjaName(buzzwordData,req,res);
+    GetNinjaName(buzzwordData, res);
   }) 
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-async function GetNinjaName(buzzwordData,req,res)
+async function GetNinjaName(buzzwordData,res)
 {
   //Vérifie si le champs du formulaire est vide
   if(!buzzwordData)
