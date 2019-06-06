@@ -1,17 +1,18 @@
-const cool = require('cool-ascii-faces')
 const bodyParser = require('body-parser')
 const qs = require('qs')
+
+var ninja_function = require('./ninja_name_fuctions')
 
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
-
+/*
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 });
-
+*/
 var urlencodedParser = bodyParser.urlencoded({extended: true})
 
 express()
@@ -36,7 +37,7 @@ express()
       var parsedQuery = qs.parse(stringifyiedReqQuery, { comma: true });
 
       const queryData = parsedQuery.x;
-      GetNinjaName(queryData,res);
+      ninja_function.GetNinjaName(queryData,res);
     }
     else
     {
@@ -49,16 +50,15 @@ express()
   // est envoyé sous la méthode POST
   .post('/ninjify', urlencodedParser, (req, res) => {
     var buzzwordData = req.body.buzzword;
-    GetNinjaName(buzzwordData, res);
+    ninja_function.GetNinjaName(buzzwordData, res);
   }) 
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
 
-
-
-
+// Il faudrait sortir les fonctions suivantes de ce fichier pour les utiliser dans un autre
+/*
 // Cette fonction recheche dans la base de données
 // la présence de tous les mots dans le paramètre
 // buzzwordData et retourne leur équivalent ninja.
@@ -127,3 +127,4 @@ function CreateNinjaName(arrNinjaName, res)
     res.render('pages/ninja_error',{error:"None of the words you've written are known to me?! What is this sorcery?!"});
   }
 }
+*/
