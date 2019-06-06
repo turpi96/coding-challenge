@@ -30,15 +30,15 @@ express()
     res.render('pages/ninjify', {qs: parsedQuery});
   })
 
-  .post('/ninjify', urlencodedParser, async (req, res) => {
+  .post('/ninjify', urlencodedParser, (req, res) => {
     var buzzwordData = req.body.buzzword;
-    await GetNinjaName(buzzwordData);
+    GetNinjaName(buzzwordData,req,res);
   }) 
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-async function GetNinjaName(buzzwordData)
+async function GetNinjaName(buzzwordData,req,res)
 {
   //Vérifie si le champs du formulaire est vide
   if(!buzzwordData)
