@@ -4,22 +4,22 @@ addBuzzwordButton.onclick = function()
 {
     count += 1;
 
+    // Crée un input text
     var inputBuzzword = document.createElement("input");
     inputBuzzword.type = "text";
     inputBuzzword.name = "buzzword[" + count + "]";
     inputBuzzword.required = true;
 
+    // Crée une balise <br>
     var addBr = document.createElement("br");
 
+    // Recherche le formulaire de la page
     var buzzwordForm = document.getElementById("buzzwordForm");
 
-    var beforeLastCount = buzzwordForm.childElementCount;
+    // Recherche le dernier élément du formulaire
+    var lastChildElement = buzzwordForm.childElementCount;
 
-    buzzwordForm.insertBefore(inputBuzzword, buzzwordForm.childNodes[beforeLastCount]);
-    buzzwordForm.insertBefore(addBr, buzzwordForm.childNodes[beforeLastCount]);
-    
-    //buzzwordForm.appendChild(inputBuzzword);
-    //buzzwordForm.appendChild(addBr);
-
-    //addBuzzwordButton.innerHTML = buzzwordForm.childElementCount;
+    // Place un input devant le bouton submit, suivit d'une balise <br>
+    buzzwordForm.insertBefore(inputBuzzword, buzzwordForm.childNodes[lastChildElement]);
+    buzzwordForm.insertBefore(addBr, buzzwordForm.childNodes[lastChildElement]);
 }
