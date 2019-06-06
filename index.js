@@ -3,7 +3,7 @@ const qs = require('qs')
 
 // ensemble de fonctions utilisés pour extraire le 
 // nom ninja selon les buzzwords entrés
-var ninja_function = require('./ninja_name_fuctions')
+var ninja_function = require('./private/ninja_name_fuctions')
 
 const express = require('express')
 const path = require('path')
