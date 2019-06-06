@@ -32,7 +32,7 @@ express()
 
   .post('/ninjify', urlencodedParser, async (req, res) => {
     var buzzwordData = req.body.buzzword;
-    GetNinjaName(buzzwordData);
+    await GetNinjaName(buzzwordData);
   }) 
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
