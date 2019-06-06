@@ -120,6 +120,6 @@ function CreateNinjaName(arrNinjaName, res)
   }
   else
   {
-    res.render('pages/ninja_error',{error:"Error: buzzwords don't exists in my database"});
+    res.render('pages/ninja_error',{error:"I couldn't find any ninja name for what you asked!"});
   }
 }
