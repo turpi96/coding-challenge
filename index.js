@@ -31,9 +31,10 @@ express()
   })
 
   .post('/ninjify', urlencodedParser, async (req, res) => {
+    var buzzwordData = req.body.buzzword;
 
     //Vérifie si le champs du formulaire est vide
-    if(!req.body.buzzword)
+    if(!buzzwordData)
     {
       res.render('pages/ninjify');
     }
@@ -44,8 +45,9 @@ express()
       {
         const client = await pool.connect()
 
+
         const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
-        const result = await client.query(sqlQuery, [req.body.buzzword[0]]);
+        const result = await client.query(sqlQuery, [buzzwordData[0]]);
 
         // Condition de gestion des cas où le query ne trouve pas le résultat
         if(result.rows.length)
@@ -59,6 +61,8 @@ express()
         {
           res.end("ERROR");
         }
+
+
 
         client.release();
       } 
