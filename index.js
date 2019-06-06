@@ -58,7 +58,7 @@ async function GetNinjaName(buzzwordData,res)
       }
     }
 
-    await CreateNinjaName(arrNinjaName);
+    await CreateNinjaName(arrNinjaName,res);
 
     client.release();
     
@@ -71,7 +71,7 @@ async function GetNinjaName(buzzwordData,res)
 
 }
 
-function CreateNinjaName(arrNinjaName)
+function CreateNinjaName(arrNinjaName, res)
 {
   if(arrNinjaName.length > 0)
   {
