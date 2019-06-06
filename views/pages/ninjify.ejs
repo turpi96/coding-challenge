@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <% include ../partials/header.ejs %>
-</head>
+  <head>
+    <% include ../partials/header.ejs %>
+  </head>
 
-<body>
+  <body>
 
-  <% include ../partials/nav.ejs %>
-  
-  <form action="/ninjify" method="POST">
-    BuzzWord: 
+    <% include ../partials/nav.ejs %>
+    
+    <form action="/ninjify" method="POST">
+      BuzzWord: <br>
 
-    <% if(qs.x)
-    {
-      qs.x.forEach(function(buzzwordItem, index)
-      { %>
-        <input type="text" name="buzzword[<%= index%>]" value="<%= buzzwordItem %>" required/>
-      <% })
-    } 
-    else 
-    {%>
-        <input type="text" name="buzzword[0]" required/>
+      <% if(qs.x)
+      {
+        qs.x.forEach(function(buzzwordItem, index)
+        { %>
+          <input type="text" name="buzzword[<%= index%>]" value="<%= buzzwordItem %>" required/><br>
+        <% })
+      } 
+      else 
+      {%>
+          <input type="text" name="buzzword[0]" required/>
 
-    <%} %>
+      <%} %>
 
-    <br><input type="submit" value="Submit">
-  </form>
+      <input type="submit" value="Submit">
+    </form>
 
-  <ul>
+    <ul>
+      
+
+    </ul>
     
 
-  </ul>
-  
 
-
-</body>
+  </body>
 </html>

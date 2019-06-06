@@ -67,7 +67,9 @@ express()
             stringFullNinjaName = stringFullNinjaName + ' ' + arrNinjaName[i];
           }
           var objFullNinjaName = {'name':stringFullNinjaName};
-          res.end(JSON.stringify(objFullNinjaName));
+          //res.end(JSON.stringify(objFullNinjaName));
+          res.render('pages/ninja_name', objFullNinjaName);
+
         }
         else
         {
