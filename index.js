@@ -50,7 +50,7 @@ express()
 
         for(i = 0; i < buzzwordData.length; i++)
         {
-          const result = await client.query(sqlQuery, [buzzwordDataItem]);
+          const result = await client.query(sqlQuery, [buzzwordData[i]]);
 
           // Condition de gestion des cas où le query ne trouve pas le résultat
           if(result.rows.length)
