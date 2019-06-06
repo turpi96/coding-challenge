@@ -96,11 +96,11 @@ async function GetNinjaName(buzzwordData,res)
   catch (err) 
   {
     console.error(err);
-    res.send("Error: " + err);
+    res.render('pages/ninja_error',{error:err});
   }
 }
 
-// Crée le nom ninja selon un array
+// Crée le nom ninja selon un array.
 // Puis, on met le résultat dans un JSON
 // qu'on affiche dans une page voulue.
 // Gère aussi le cas où il n'y a aucun
