@@ -43,13 +43,12 @@ express()
       
       try 
       {
-        /*
         const client = await pool.connect()
         const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
         
         var arrNinjaName = [];
 
-        buzzwordData.forEach(function(buzzwordDataItem, itemIndex)
+        buzzwordData.forEach( async function(buzzwordDataItem, itemIndex)
         {
           const result = await client.query(sqlQuery, [buzzwordDataItem]);
 
@@ -77,8 +76,8 @@ express()
         }
 
         client.release();
-        */
-       res.end("hello");
+        
+       //res.end("hello");
       } 
       catch (err) 
       {
