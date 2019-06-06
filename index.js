@@ -47,7 +47,7 @@ express()
 
 
         const sqlQuery = 'SELECT ninja_equivalent FROM buzzword_ninja_name_equiv_table WHERE buzzword = $1';
-        const result = await client.query(sqlQuery, [buzzwordData[0]]);
+        const result = await client.query(sqlQuery, [buzzwordData[2]]);
 
         // Condition de gestion des cas où le query ne trouve pas le résultat
         if(result.rows.length)
