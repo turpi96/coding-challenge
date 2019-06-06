@@ -22,18 +22,19 @@ express()
 
   .get('/ninjify', (req, res) => {
 
-    // Converti le query en JSON où les virgules est un délimiteur d'array
-    var stringifyiedReqQuery = qs.stringify(req.query);
-    var parsedQuery = qs.parse(stringifyiedReqQuery, { comma: true })
 
-    if(Object.keys(req.query).length === 0)
+    if(Object.keys(req.query).length != 0 && req.param('x') != null)
     {
-      res.render('pages/ninjify');
+      // Converti le query en JSON où les virgules est un délimiteur d'array
+      var stringifyiedReqQuery = qs.stringify(req.query);
+      var parsedQuery = qs.parse(stringifyiedReqQuery, { comma: true });
+
+      const queryData = parsedQuery.x;
+      GetNinjaName(queryData,res);
     }
     else
     {
-      const queryData = parsedQuery.x;
-      GetNinjaName(queryData,res);
+      res.render('pages/ninjify');
     }
   })
 
