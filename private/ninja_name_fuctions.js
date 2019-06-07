@@ -106,7 +106,7 @@ function CreateNinjaName(arrNinjaName, res)
     }
     else
     {
-        res.render('pages/ninja_error',{error:"None of the words you've written are known to me?! What is this sorcery?!"});
+        res.render('pages/ninja_error',{error:"None of the words you've entered are known to me?! What is this? Sorcery?!"});
     }
 }
 
