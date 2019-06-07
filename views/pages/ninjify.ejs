@@ -5,15 +5,28 @@
   </head>
 
   <body>
+    <p>
+      <h2>Hey, you!</h1>
+      <img src="/img/uncle_sam.png" class="uncle_sam" alt="Uncle Sam">
+      <h2>Yes, you!</h2>
+    </p>
 
-    <% include ../partials/nav.ejs %>
-    
+    <p>
+      I'm currently looking for ninja names, but I don't really have any ideas.
+    </p>
+    <p>
+      You can help me by entering "buzzwords" below. <br>
+      To help you, I've gathered a list that I <b>MAY</b> know, which you can find <a href="https://github.com/sindresorhus/awesome">here</a>.
+    </p>
+
+    <br>
+
     <form action="/ninjify" method="POST" id="buzzwordForm">
-      BuzzWord: <br>
+      <label>Enter your buzzwords here:</label> <br>
       <input type="text" name="buzzword[0]" required/><br>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit">   <button id="addBuzzword" type="button">Add a Buzzword field</button>
+
     </form>
-    <button id="addBuzzword">Add a Buzzword field</button>
 
 
   </body>

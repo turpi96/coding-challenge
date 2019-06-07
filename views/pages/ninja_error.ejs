@@ -5,15 +5,23 @@
     </head>
 
     <body>
+    
+        <h1>
+            Oh no... A wild problem has appeared!
+        </h1>
+        <div style="width:100%;"><iframe src="https://giphy.com/embed/INt804DkZRTvW" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/reaction-humor-jack-sparrow-INt804DkZRTvW">via GIPHY</a></p>
+        <p> So, what's the problem? Here it is:</p>
 
-    <% include ../partials/nav.ejs %>
+        <p class="error_text">
+            <%= error %>
+        </p>
 
-    <p>
-        Oh no... A problem has occured!
-    </p>
-    <p>
-        <%= error %>
-    </p>
+        <br>
+
+        <p>
+            You can try again by pressing the button below.<br>
+            <a href="/ninjify"> <button type="button"> Try again</button> </a>
+        </p>
 
     </body>
 </html>

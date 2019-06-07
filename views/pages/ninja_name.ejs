@@ -5,12 +5,24 @@
     </head>
 
     <body>
-
-    <% include ../partials/nav.ejs %>
-
-    <p>
-        Your ninja name is <%= name %>
-    </p>
+        <h2>Hey, thanks!</h2>
+        <img src="/img/naruto_point.png" class="naruto_point" alt="Naruto_point">
+        <br><br>
+        <p>
+            I was able to find a ninja name because of you!
+        </p>
+        <p>
+            The ninja name I've come up with is: 
+        </p>
+        <h1 class="ninja_name">
+            <%= name %>
+        </h1>
+        <br>
+        <p>
+            You can also help again to find another <br>
+            ninja name by pressing the button below.<br>
+            <a href="/ninjify"> <button type="button"> Help again</button> </a>
+        </p>
 
     </body>
 </html>

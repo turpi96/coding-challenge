@@ -19,7 +19,11 @@ addBuzzwordButton.onclick = function()
     // Recherche le dernier élément du formulaire
     var lastChildElement = buzzwordForm.childElementCount;
 
-    // Place un input devant le bouton submit, suivit d'une balise <br>
+    // Place un input devant le bouton submit, suivit d'une balise <br> à tous les 3 inputs
     buzzwordForm.insertBefore(inputBuzzword, buzzwordForm.childNodes[lastChildElement]);
-    buzzwordForm.insertBefore(addBr, buzzwordForm.childNodes[lastChildElement]);
+    if(count % 3 === 0)
+    {
+        buzzwordForm.insertBefore(addBr, buzzwordForm.childNodes[lastChildElement]);
+
+    }
 }

@@ -1,0 +1,51 @@
+
+body
+{
+    background: #333333;
+    color: #ffffff;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+button, input[type="submit"]
+{
+    background-color: #007acc;
+    color: white;
+    border: none;
+
+    padding: 10px 20px;
+    margin: 4px 2px 8px;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+input[type="text"]
+{
+    margin: 2px 2px;
+    color: black;
+
+}
+
+.uncle_sam
+{
+    margin-left: 5%;
+    width: 25%;
+}
+
+.naruto_point
+{
+    margin-left: 1%;
+    width: 25%;
+}
+
+.ninja_name
+{
+    font-size: 48px;
+}
+
+.error_text
+{
+    font-size: 24px;
+}
