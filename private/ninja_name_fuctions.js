@@ -4,7 +4,7 @@ const pool = new Pool({
   ssl: true
 });
 
-const ninjaNameLength = 3;
+const NINJA_NAME_LENGTH = 3;
 
 module.exports = {
     // Cette fonction recheche dans la base de données
@@ -68,7 +68,7 @@ function CreateNinjaName(arrNinjaName, res)
         // Génère un nom de 3 mots maximum
         // Si l'array de buzzword est plus grand que 3,
         // on en prend 3 aléatoirement
-        if(arrNinjaName.length <= ninjaNameLength)
+        if(arrNinjaName.length <= NINJA_NAME_LENGTH)
         {
             stringFullNinjaName = arrNinjaName[0] + ' '
             for(i = 1; i < arrNinjaName.length; i++)
@@ -81,7 +81,7 @@ function CreateNinjaName(arrNinjaName, res)
             var randomNumber = randomInt(arrNinjaName.length);
             stringFullNinjaName = arrNinjaName[randomNumber] + ' ';
             arrNinjaName.splice(randomNumber, 1);
-            for(i = 1; i < ninjaNameLength; i++)
+            for(i = 1; i < NINJA_NAME_LENGTH; i++)
             {
                 randomNumber = randomInt(arrNinjaName.length);
                 stringFullNinjaName = stringFullNinjaName + ' ' +arrNinjaName[randomNumber];
