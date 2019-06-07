@@ -4,6 +4,8 @@ const pool = new Pool({
   ssl: true
 });
 
+const ninjaNameLength = 3;
+
 module.exports = {
     // Cette fonction recheche dans la base de données
     // la présence de tous les mots dans le paramètre
@@ -61,11 +63,32 @@ function CreateNinjaName(arrNinjaName, res)
 {
     if(arrNinjaName.length > 0)
     {
-        var stringFullNinjaName = arrNinjaName[0];
-        for(i = 1; i < arrNinjaName.length; i++)
+        var stringFullNinjaName = [];
+
+        // Génère un nom de 3 mots maximum
+        // Si l'array de buzzword est plus grand que 3,
+        // on en prend 3 aléatoirement
+        if(arrNinjaName.length <= ninjaNameLength)
         {
-        stringFullNinjaName = stringFullNinjaName + ' ' + arrNinjaName[i];
+            stringFullNinjaName = arrNinjaName[0] + ' '
+            for(i = 1; i < arrNinjaName.length; i++)
+            {
+                stringFullNinjaName = stringFullNinjaName + ' ' + arrNinjaName[i];
+            }
         }
+        else
+        {
+            var randomNumber = randomInt(arrNinjaName.length);
+            stringFullNinjaName = arrNinjaName[randomNumber] + ' ';
+            arrNinjaName.splice(randomNumber, 1);
+            for(i = 1; i < ninjaNameLength; i++)
+            {
+                randomNumber = randomInt(arrNinjaName.length);
+                stringFullNinjaName = stringFullNinjaName + ' ' +arrNinjaName[randomNumber];
+                arrNinjaName.splice(randomNumber, 1);
+            }
+        }
+        
         var objFullNinjaName = {'name':stringFullNinjaName};
         res.render('pages/ninja_name', objFullNinjaName);
 
@@ -74,4 +97,10 @@ function CreateNinjaName(arrNinjaName, res)
     {
         res.render('pages/ninja_error',{error:"None of the words you've written are known to me?! What is this sorcery?!"});
     }
+}
+
+// Retourne un chiffre entre 0 (inclus) et "high" (exclus)
+function randomInt(high)
+{
+    return Math.floor(Math.random() * high);
 }
