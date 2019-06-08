@@ -1,54 +1,42 @@
-# TLM Coding challenge
-(inspired by: https://github.com/coveo/backend-coding-challenge)
+Code Challenge de TLM par Jean-Philippe Savard
 
-## Requirements
+Lien vers l'application: https://jp-code-challenge.herokuapp.com/ninjify
 
-### Backend
-Design an API endpoint that provides a ninja name based on a list of technology buzzwords (Ex: [Awesome List](https://github.com/sindresorhus/awesome))
 
-- The endpoint is exposed at `/ninjify`
-- The search has to be deterministic
-- The search term is passed as a querystring parameter `x`
-- The endpoint returns a JSON with a ninja name
 
-### Frontend
-Design an user interface to input web technology buzzwords and then generate an awesome ninja name.
+Première expérience avec:
+-Heroku
+-Node.js
+-En théorie, PostgreSQL (mais j'ai déjà travaillé avec MySQL et SQL Server, donc...)
 
-- Responsive
-- Mobile/Desktop compatibility
 
-## "The rules"
 
-- *You can use the language and technology of your choosing.* It's OK to try something new (tell us if you do), but feel free to use something you're comfortable with. We don't care if you use something we don't; the goal here is not to validate your knowledge of a particular technology.
-- End result should be deployed on a public Cloud (Heroku, AWS etc. all have free tiers you can use).
-- The results have to be SFW and politically correct
+Le but du challenge est de générer un nom de ninja basé sur des "buzzwords".
 
-## Advices
+Il faut que le backend soit accéssible par le endpoint "/ninjify" et 
+qu'on puisse passer un querystring pour faire la recherche avec comme
+paramètre "x". L'endpoint doit alors retourner un JSON avec le nom ninja.
 
-- **Try to design and implement your solution as you would do for real production code**. Show us how you create clean, maintainable code that does awesome stuff. Build something that we'd be happy to contribute to. This is not a programming contest where dirty hacks win the game.
-- Feel free to add more features! Really, we're curious about what you can think of. We'd expect the same if you worked with us.
-- Documentation and maintainability is a plus.
-- Don't you forget those unit tests.
-- We don’t want to know if you can do exactly as asked (or everybody would have the same result). We want to know what **you** bring to the table when working on a project, what is your secret sauce. More features? Best solution? Thinking outside the box?
-- Make sure you apply security good practices. _Ninjas hide their secrets because pirates will find them._
+Le frontend doit être responsive et compatible avec les ordis et mobiles.
 
-## Bonuses
-- Add easter egg with the `Konami` code.
-- Permalink to share the result
 
-## Sample responses
 
-These responses are meant to provide guidance. The exact values can vary based on the data source and scoring algorithm
+L'application s'ouvre sur un formulaire que l'on peut remplir et soumettre.
+On peut aussi ajouter des "input text" pour ajouter plus de buzzwords ou
+en retirer.
 
-    GET /ninjify?x=sass,rails,html
+En soumettant le formulaire, le serveur cherche la présence de chaque mot
+dans une base de données et retire l'équivalent "ninja". Puis, s'il y a plus
+de 3 mots qui sont retournés, on choisit 3 mots dans la liste de façon aléatoire
+pour former le nom. Enfin, un JSON est alors passé dans une page où on l'affiche de 
+façon "élégante".
 
-```json
-{
-  "name": "Crimson Drop Shadow"
-}
-```
+On peut aussi faire l'équivalent de la soumission du formulaire en utilisant un
+querystring avec paramètre "x", il suffit de séparer chaque mot par une virgule
+comme "/ninjy?x=Ruby,C,HTML".
 
-## Getting Started
 
-Begin by forking this repo and cloning your fork. GitHub has apps for [Mac](http://mac.github.com/) and
-[Windows](http://windows.github.com/) that make this easier.
+
+
+Il y a présence de l'easter egg du Konami Code, par très dure à trouver. Je donne
+comme indice "10 mots"!
