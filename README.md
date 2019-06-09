@@ -10,6 +10,8 @@ Première expérience avec:
 -En théorie, PostgreSQL (mais j'ai déjà travaillé avec MySQL et SQL Server, donc...)
 
 
+À noter que je me suis aidé à décoller ce challenge en utilisant un projet offert
+par Heroku pour apprendre à utiliser Node.js sur leur plateforme (https://github.com/heroku/node-js-getting-started.git).
 
 Le but du challenge est de générer un nom de ninja basé sur des "buzzwords".
 
